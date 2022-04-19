@@ -42,6 +42,8 @@ public class main {
 			System.out.println(e.getMessage());
 		}catch (InputMismatchException e) {
 			System.out.println(e.getMessage());
+			sc.next();
+
 		}
 		}
 		
