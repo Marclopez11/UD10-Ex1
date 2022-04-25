@@ -8,48 +8,30 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int numeroAleatorio;
-		numeroAleatorio = (int) Math.floor(Math.random() * (0 - 500 + 1) + 500);
-		System.out.println(numeroAleatorio);
-		boolean acertar = false;
-		int intentos = 0;
+		GenerarNumero generarNumero = new GenerarNumero();
+		System.out.println(generarNumero.generarNumero());
 
-		for (int i = 1; !acertar; i++) {
+		while (true) {
 
-			
-			intentos++;
-		
-		try {
+			try {
+				System.out.println("Introduce un  numero");
+				int numero = sc.nextInt();
+				// resuelve codigo con excepcion
+				numero = generarNumero.comprobarNumero(numero);
+				break;
+			} catch (MiException e) {
+				System.out.println(e.getMessage());
 
-			System.out.println("Introduce un  numero");
-			int numero = sc.nextInt();
-			// resuelve codigo con excepcion
-			
-			
+			} catch (InputMismatchException e) {
+				System.out.println(e.getMessage());
+				generarNumero.setIntentos(1);
+				sc.next();
 
-			if (numeroAleatorio > numero) {
-				throw new MiException(111);
-			} else if (numeroAleatorio < numero) {
-				throw new MiException(222);
-			} else if (numeroAleatorio == numero) {
-				acertar = true;
-				intentos--;
-				throw new MiException(333);
-				
 			}
-
-		} catch (MiException e) {
-			System.out.println(e.getMessage());
-		}catch (InputMismatchException e) {
-			System.out.println(e.getMessage());
-			sc.next();
-
 		}
-		}
-		
+
 		System.out.println("");
-		System.out.println("Fallos Totales "+intentos);
-		
+		System.out.println("Fallos Totales " + generarNumero.getIntentos());
 
 	}
 

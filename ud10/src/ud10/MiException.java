@@ -27,8 +27,6 @@ public class MiException extends Exception {
 			mensaje = "Exception 111, Has adivinado el numero ";
 
 			break;
-		
-		
 
 		default:
 			break;
